@@ -1,11 +1,12 @@
-package java.yapensareenalgo;
+package com.main;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.pojo.Asignatura;
 import java.util.Scanner;
+
+import com.pojo.Asignatura;
 
 public class AlmacenarAsignaturas {
 
@@ -18,7 +19,7 @@ public class AlmacenarAsignaturas {
 		String nombre;
 		String codigo;
 		int horas;
-		String profesor;
+		String profesor;	
 		
 		for (int i = 0; i < asignaturas.length; i++) {
 			
@@ -41,22 +42,25 @@ public class AlmacenarAsignaturas {
 		sc.close();
 		
 		//Guardar objetos a archivo binario
-		try (ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("asignaturas.dat")))) {
-			
-			for(Asignatura asig : asignaturas) {
-				
-				oos.writeObject(asig); //Guardar asignatura en un archivo binario
-				
-			}
-			
-			System.out.println("Asignaturas guardadas correctamente");
-			
-		} catch (IOException e) {
-			
-			System.out.println("Su base de datos de virus ha sido actualizada");
-			e.printStackTrace();
-			
-		}
+		
+		  try (ObjectOutputStream oos = new ObjectOutputStream(new
+		  BufferedOutputStream(new FileOutputStream("ficheros/asignaturas.dat")))) {
+		  
+		  for(Asignatura asig : asignaturas) {
+		  
+		  oos.writeObject(asig); //Guardar asignatura en un archivo binario
+		  
+		  }
+		  
+		  System.out.println("Asignaturas guardadas correctamente");
+		  
+		  } catch (IOException e) {
+		  
+		  System.out.println("Su base de datos de virus ha sido actualizada");
+		  e.printStackTrace();
+		  
+		  }
+		 
 		
 	}
 }
